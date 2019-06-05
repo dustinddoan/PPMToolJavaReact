@@ -1,4 +1,4 @@
-package net.devlife.ppmtool;
+package com.devlife.ppmtool;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,10 +7,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class PpmtoolApplicationTests {
+public class PpmtoolJavaApiApplicationTests {
 
-    @Test
-    public void contextLoads() {
-    }
+	@Test
+	public void contextLoads() {
+	}
 
 }
