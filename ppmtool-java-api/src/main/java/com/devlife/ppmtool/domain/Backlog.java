@@ -11,17 +11,18 @@ public class Backlog {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private int PTSequence = 0;
+	private Integer PTSequence = 0;
 	private String projectIdentifier;
+
 //	ONE TO ONE with Project
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "project_id", nullable = false)
+	@JoinColumn(name="project_id", nullable = false)
 	@JsonIgnore
 	private Project project;
 
 //	ONE TO MANY with ProjectTask
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "backlog")
-	private List<Backlog> projectTasks = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "backlog")
+	private List<ProjectTask> projectTasks = new ArrayList<>();
 
 	public Backlog() {
 	}
@@ -34,11 +35,11 @@ public class Backlog {
 		this.id = id;
 	}
 
-	public int getPTSequence() {
+	public Integer getPTSequence() {
 		return PTSequence;
 	}
 
-	public void setPTSequence(int PTSequence) {
+	public void setPTSequence(Integer PTSequence) {
 		this.PTSequence = PTSequence;
 	}
 
@@ -58,11 +59,11 @@ public class Backlog {
 		this.project = project;
 	}
 
-	public List<Backlog> getProjectTasks() {
+	public List<ProjectTask> getProjectTasks() {
 		return projectTasks;
 	}
 
-	public void setProjectTasks(List<Backlog> projectTasks) {
+	public void setProjectTasks(List<ProjectTask> projectTasks) {
 		this.projectTasks = projectTasks;
 	}
 }

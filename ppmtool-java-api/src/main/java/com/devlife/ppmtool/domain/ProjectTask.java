@@ -17,11 +17,12 @@ public class ProjectTask {
 	private String summary;
 	private String acceptanceCriteria;
 	private String status;
-	private int priority;
+	private Integer priority;
 	private Date dueDate;
-//	MANY TO ONE relationship with Backlog
+
+	//	MANY TO ONE relationship with Backlog
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
-	@JoinColumn(name="backlog_id", updatable = false, nullable = false)
+	@JoinColumn(name = "backlog_id", updatable = false, nullable = false)
 	@JsonIgnore
 	private Backlog backlog;
 
@@ -29,7 +30,6 @@ public class ProjectTask {
 	private String projectIdentifier;
 	private Date created_At;
 	private Date updated_At;
-
 
 
 	public ProjectTask() {
@@ -75,11 +75,11 @@ public class ProjectTask {
 		this.status = status;
 	}
 
-	public int getPriority() {
+	public Integer getPriority() {
 		return priority;
 	}
 
-	public void setPriority(int priority) {
+	public void setPriority(Integer priority) {
 		this.priority = priority;
 	}
 
