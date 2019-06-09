@@ -1,6 +1,7 @@
 package com.devlife.ppmtool.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.exception.DataException;
 
 import javax.persistence.*;
@@ -34,6 +35,7 @@ public class Project {
 //	ONE ON ONE RELATIONSHIP WITH BACKLOG
 //	EAGER backlog ready - delete Project also delete Backlog
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project")
+	@JsonIgnore
 	private Backlog backlog;
 
 	public Project() {
