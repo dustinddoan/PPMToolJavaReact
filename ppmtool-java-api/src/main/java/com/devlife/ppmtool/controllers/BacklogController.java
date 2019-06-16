@@ -1,5 +1,6 @@
 package com.devlife.ppmtool.controllers;
 
+import com.devlife.ppmtool.domain.Project;
 import com.devlife.ppmtool.domain.ProjectTask;
 import com.devlife.ppmtool.services.ProjectTaskService;
 import com.devlife.ppmtool.services.ValidationErrorService;
@@ -37,5 +38,19 @@ public class BacklogController {
 		return projectTaskService.findBacklogById(backlog_id);
 	}
 
+	@GetMapping("/{backlog_id}/{pt_id}")
+	public ResponseEntity<?> getProjectTask(@PathVariable String backlog_id, @PathVariable String pt_id) {
+		ProjectTask projectTask = projectTaskService.findPTByProjectSequence(backlog_id, pt_id);
+		return new ResponseEntity<ProjectTask>(projectTask, HttpStatus.OK);
+	}
 
+	@PatchMapping("/{backlog_id}/{pt_id}")
+	public ResponseEntity<?> updateProjectTask(@Valid @RequestBody ProjectTask projectTask, BindingResult result,
+	                                           @PathVariable String backlog_id, @PathVariable String pt_id) {
+		ResponseEntity<?> errorMap = validationErrorService.MapValidationService(result);
+		if (errorMap != null) return errorMap;
+
+		ProjectTask updateTask = projectTaskService.updateByProjectSequence(projectTask, backlog_id, pt_id);
+		return new ResponseEntity<ProjectTask>(updateTask, HttpStatus.OK);
+	}
 }
