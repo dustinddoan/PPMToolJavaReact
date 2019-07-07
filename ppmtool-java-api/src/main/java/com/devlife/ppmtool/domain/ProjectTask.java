@@ -13,8 +13,9 @@ public class ProjectTask {
 	private Long id;
 	@Column(updatable = false, unique = true)
 	private String projectSequence;
-	@NotBlank(message = "Please include a project summary")
+	@NotBlank(message = "Please include project task summary")
 	private String summary;
+
 	private String acceptanceCriteria;
 	private String status;
 	private Integer priority;

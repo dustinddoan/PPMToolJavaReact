@@ -13,6 +13,7 @@ import java.util.Map;
 public class ValidationErrorService {
 	public ResponseEntity<?> MapValidationService(BindingResult result) {
 		if (result.hasErrors()) {
+			System.out.println("result: " + result);
 			Map<String, String> errorMap = new HashMap<>();
 			for (FieldError fieldError: result.getFieldErrors()) {
 				errorMap.put(fieldError.getField(), fieldError.getDefaultMessage());
